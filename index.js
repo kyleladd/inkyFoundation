@@ -24,6 +24,8 @@
         plugin.convert_to_inky = function() {
             $clone.find(".columns").replaceTag("<columns>",true);
             $clone.find(".columns").removeClass("columns");
+            $clone.find(".column").replaceTag("<columns>",true);
+            $clone.find(".column").removeClass("column");
             $clone.find(".row").replaceTag("<row>",true);
             $clone.find(".row").removeClass("row");
 
