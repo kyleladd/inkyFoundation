@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Basic Plugin</title>
+		<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<div id="foundation-grid">
+			<div class="row">
+			  <div class="columns small-6">6 columns</div>
+			  <div class="columns small-6">6 columns</div>
+			</div>
+			<div class="row">
+			  <div class="columns medium-6 large-4">12/6/4 columns</div>
+			  <div class="columns medium-6 large-8">12/6/8 columns</div>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				var x = $('#foundation-grid').inkyFoundation();
+				x.data("inkyFoundation").convert_to_inky();
+				
+			});
+		</script>
+	</body>
+</html>
