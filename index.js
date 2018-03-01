@@ -12,7 +12,8 @@
         plugin.settings = {}
 
         var $element = $(element),
-             element = element;
+             element = element,
+             $clone = $(element).clone();
 
         plugin.init = function() {
             plugin.settings = $.extend({}, defaults, options);
@@ -21,19 +22,21 @@
 
 
         plugin.convert_to_inky = function() {
-            $element.find(".columns").replaceTag("<columns>",true);
-            $element.find(".columns").removeClass("columns");
-            $element.find(".row").replaceTag("<row>",true);
-            $element.find(".row").removeClass("row");
+            $clone.find(".columns").replaceTag("<columns>",true);
+            $clone.find(".columns").removeClass("columns");
+            $clone.find(".row").replaceTag("<row>",true);
+            $clone.find(".row").removeClass("row");
 
-            $('*[class*="small-"],*[class*="large-"]').each(function(index,element){
+            $clone.find('*[class*="small-"],*[class*="large-"]').each(function(index,element){
                 var self = this;
                 var class_list = $(self).attr('class').split(/\s+/);
+                console.log("class list", class_list);
                 var matched_classes = class_list.filter(function(css_class){
                     var patt = /^(small|large)-\d+$/;
                     var res = patt.test(css_class);
                     return res;
                 });
+                console.log("matched_classes",matched_classes);
                 matched_classes.forEach(function(css_class){
                     var split_string = css_class.split("-");
                     $(self).attr(split_string[0],split_string[1]);
@@ -41,7 +44,8 @@
                 });
             });
 
-            $('*[class=""]').removeAttr('class');
+            $clone.find('*[class=""]').removeAttr('class');
+            return $clone.html();
         }
 
         var foo_private_method = function() {

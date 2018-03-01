@@ -2,11 +2,19 @@
 <html>
 	<head>
 		<title>Basic Plugin</title>
-		<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-		<script src="index.js"></script>
+		<!-- <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" /> -->
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" />
 	</head>
 	<body>
-		<div id="foundation-grid">
+		<style>
+			.row .column,.row .columns{
+				background: #e4e4e4;
+			    border: 1px solid #ccc;
+			    height: 60px;
+			    line-height: 60px;
+			}
+		</style>
+		<div id="foundation-grid" class="grid-container">
 			<div class="row">
 			  <div class="columns small-6">6 columns</div>
 			  <div class="columns small-6">6 columns</div>
@@ -16,11 +24,18 @@
 			  <div class="columns medium-6 large-8">12/6/8 columns</div>
 			</div>
 		</div>
+		<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" /> --> <!--Uses XY Grid: https://foundation.zurb.com/sites/docs/xy-grid.html-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" />
+		<script>
+			$(document).foundation();
+		</script>
+		<script src="index.js"></script>
 		<script>
 			$(function() {
 				var x = $('#foundation-grid').inkyFoundation();
-				x.data("inkyFoundation").convert_to_inky();
-				
+				var y = x.data("inkyFoundation").convert_to_inky();
+				console.log(y);
 			});
 		</script>
 	</body>
