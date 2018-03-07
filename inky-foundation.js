@@ -46,7 +46,7 @@
             });
 
             $clone.find('*[class=""]').removeAttr('class');
-            return $clone.html();
+            return $clone.wrapAll("<div>").parent().html();
         }
 
         var foo_private_method = function() {
