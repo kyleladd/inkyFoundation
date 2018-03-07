@@ -23,6 +23,10 @@
 			  <div class="columns medium-6 large-4">12/6/4 columns</div>
 			  <div class="columns medium-6 large-8">12/6/8 columns</div>
 			</div>
+			<div class="row">
+			  <div class="columns medium-6 large-4"></div>
+			  <div class="columns medium-6 large-8"></div>
+			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js" /> --> <!--Uses XY Grid: https://foundation.zurb.com/sites/docs/xy-grid.html-->
@@ -30,12 +34,12 @@
 		<script>
 			$(document).foundation();
 		</script>
-		<script src="index.js"></script>
+		<script src="inky-foundation.js"></script>
 		<script>
 			$(function() {
-				var x = $('#foundation-grid').inkyFoundation();
-				var y = x.data("inkyFoundation").convert_to_inky();
-				console.log(y);
+				var elem = $('#foundation-grid').inkyFoundation();
+				var converted_inky_html = elem.data("inkyFoundation").convert_to_inky();
+				console.log(converted_inky_html);
 			});
 		</script>
 	</body>

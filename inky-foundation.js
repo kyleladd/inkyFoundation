@@ -28,17 +28,16 @@
             $clone.find(".column").removeClass("column");
             $clone.find(".row").replaceTag("<row>",true);
             $clone.find(".row").removeClass("row");
+            $clone.find("br").replaceTag("<spacer size=\"16\">",true);
 
             $clone.find('*[class*="small-"],*[class*="large-"]').each(function(index,element){
                 var self = this;
                 var class_list = $(self).attr('class').split(/\s+/);
-                console.log("class list", class_list);
                 var matched_classes = class_list.filter(function(css_class){
                     var patt = /^(small|large)-\d+$/;
                     var res = patt.test(css_class);
                     return res;
                 });
-                console.log("matched_classes",matched_classes);
                 matched_classes.forEach(function(css_class){
                     var split_string = css_class.split("-");
                     $(self).attr(split_string[0],split_string[1]);
@@ -82,15 +81,20 @@
                 });
             }
             $currentElem.wrapAll($newTag);
-            $currentElem.contents().unwrap();
-            // return node; (Error spotted by Frank van Luijn)
-            return this; // Suggested by ColeLawrence
+            // Handle empty elements - current element was within converted element when there wasn't anything to unwrap
+            if($currentElem.contents().length > 0){
+                $currentElem.contents().unwrap();
+            }
+            else{
+                $currentElem.remove();
+            }
+            
+            return this;
         }
     });
 
     $.fn.extend({
         replaceTag: function (newTagObj, keepProps) {
-            // "return" suggested by ColeLawrence
             return this.each(function() {
                 jQuery.replaceTag(this, newTagObj, keepProps);
             });
